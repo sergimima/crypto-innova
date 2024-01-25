@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 
 router.get('/:nick', async (req, res) => {
     try {
-        const result = await pool.query("SELECT * FROM users where nick = 'djseku'",[req.params.nick])
+        const result = await pool.query("SELECT * FROM users where nick = '$1'",[req.params.nick])
         console.log(req.params.nick)
         res.send(result.rows)
     }catch(error){
