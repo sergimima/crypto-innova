@@ -1,0 +1,95 @@
+import pg from "pg";
+const { Pool } = pg;
+
+const connectionString = {
+	host: 'localhost',
+	port: 5436,
+	database: 'postgres',
+	user: 'postgres',
+	password: 'crypto',
+	};
+
+const pool = new pg.Pool(connectionString)
+
+export default function Connections() {
+	console.log("llega")
+
+	const checkUser = async (nick, password) => {
+		nick = "djseku"
+		await pool.connect()
+		const res = await client.query("SELECT * from users where nick = 'djseku'")
+		console.log(res)
+	}
+
+	/*const getMerchants = async () => {
+		try {
+		  return await new Promise(function (resolve, reject) {
+			pool.query("SELECT * FROM users", (error, results) => {
+			  if (error) {
+				reject(error);
+			  }
+			  if (results && results.rows) {
+				resolve(results.rows);
+				console.log("llega")
+			  } else {
+				reject(new Error("No results found"));
+			  }
+			});
+		  });
+		} catch (error_1) {
+		  console.error(error_1);
+		  throw new Error("Internal server error");
+		}
+	  };
+	  console.log("hello")
+	  console.log(getMerchants.results)*/
+}
+	
+	/*
+	console.log("test")
+	const checkUser = async (nick, password) => {
+		nick = "djseku"
+		await client.connect()
+		const res = await client.query("SELECT * from users where nick = 'djseku'")
+		console.log(res)
+	}
+	app.get("/", async (req, res) => {
+		const response = await client.query("select * from users",[])
+		res.send(response.rows)
+		console.log(res)
+	})*/
+
+
+
+
+
+/*
+const client = new Pool({
+	host: 'localhost',
+	port: 5436,
+	database: 'postgres',
+	user: 'postgres',
+	password: 'crypto',
+	});*/
+
+
+
+
+
+
+/*
+///////COMANDS USED
+
+
+create table if not exists INNOVERS (
+	ID serial PRIMARY KEY,
+	nick varchar (255) not NULL,
+	name varchar (255) not NULL,
+	lastname varchar (255) not NULL,
+	email varchar (255) unique not NULL,
+	password varchar (255) not null
+);
+
+insert into users (nick, name, lastname, email, password) values ('djseku', 'sergi', 'mias', 'sergimima@gmail.com', 'test');
+
+*/
