@@ -5,9 +5,8 @@ const dbConnection = require("./database/conection")
 
 app.listen(3000)
 
-app.use("/login", dbConnection)
+app.use("/login/:djseku", dbConnection)
 
-app.get("/", (req,res) => {
-    
-    res.send(dbConnection)
+app.get("/", (req, res) => {
+    res.send("hola")
 })

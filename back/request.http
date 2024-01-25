@@ -1,0 +1,8 @@
+GET http://localhost:3000
+
+###
+
+GET http://localhost:3000/login 
+
+###
+GET http://localhost:3000/login/:djseku

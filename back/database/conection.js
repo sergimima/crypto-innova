@@ -15,11 +15,19 @@ const pool = new Pool(connectionString)
 
 router.get("/", async (req, res) => {
     try {
-        //console.log("aqui llega")
-        const res = await pool.query("select * from users")
-        res.send(res.rows)
+        const result = await pool.query("SELECT * FROM users")
+        res.send(result.rows)
     }catch(error){
-        res.status(500).send({error})
+        res.send({error})
+    }
+})
+
+router.get("/:nick", async (req, res) => {
+    try {
+        const result = await pool.query("SELECT * FROM users where nick = '$1'",[req.params.nick])
+        res.send(result.rows[0])
+    }catch(error){
+        res.send({error})
     }
 })
  
