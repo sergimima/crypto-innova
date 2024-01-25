@@ -1,12 +1,14 @@
 const express = require("express")
 const app = express()
-const dbConnection = require("./database/conection")
+const userRoutes= require("./routes/userRoutes")
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use("/users", userRoutes)
 
-app.listen(3000)
-
-app.use("/login/:djseku", dbConnection)
-
-app.get("/", (req, res) => {
-    res.send("hola")
+app.get("/", (req,res) => {
+    res.send("Main")
 })
+app.listen(3000, () => {
+    console.log("Servidor corriendo en el puerto 3000");
+});
