@@ -1,3 +1,4 @@
+const body = require("body-parser")
 const express = require("express");
 const router = express.Router();
 const pool = require("../database/db");
@@ -12,13 +13,24 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get('/:nick', async (req, res) => {
+router.get('/login/:email/:password', async (req, res) => {
     try {
-        const result = await pool.query("SELECT * FROM users where nick = '$1'",[req.params.nick])
-        console.log(req.params.nick)
-        res.send(result.rows)
+        const email = req.params.email
+        const password = req.params.password
+        const result = await pool.query(queries.selectUser,[email, password]);
+        if (result.rowCount > 0) {
+            // El usuario ha iniciado sesión correctamente
+            console.log("Llega")
+            res.send(result.rows)
+           // req.session.userId = results[0].id;
+            //res.redirect('/dashboard');
+          } else {
+            // El usuario no ha iniciado sesión correctamente
+            res.send('Invalid username or password.');
+            console.log("No Llega Llega")
+          }
+        //res.send(result.rows)
     }catch(error){
-        console.log(req.params.nick)
         res.send({error})
     }
 });

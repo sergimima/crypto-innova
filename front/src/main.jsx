@@ -7,8 +7,12 @@ import { Home } from './components/Home'
 import { News } from './components/News'
 import { Projects } from './components/Projects'
 import {Login} from './components/Login'
+import {QueryClient, QueryClientProvider} from 'react-query'
+
+const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <QueryClientProvider client={queryClient}>
    <React.StrictMode>
             <BrowserRouter >
               <Routes>
@@ -19,5 +23,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 </Route>
               </Routes>
             </BrowserRouter >
-        </React.StrictMode>,
+    </React.StrictMode>,
+  </QueryClientProvider>
 )
