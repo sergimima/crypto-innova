@@ -10,7 +10,7 @@ import {Login} from './components/Login'
 import {QueryClient, QueryClientProvider} from 'react-query'
 
 const queryClient = new QueryClient()
-
+//const [isLoggedIn, setisLoggedIn] = useState(null);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
    <React.StrictMode>
@@ -19,8 +19,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path='/' element={<Home></Home>}>
                   <Route path='/news' element={<News></News>}/>
                   <Route path='/projects' element={<Projects></Projects>}></Route>
-                  <Route path='/login' element={<Login></Login>}></Route>
                 </Route>
+                <Route path='/login' element={<Login></Login>}></Route>
               </Routes>
             </BrowserRouter >
     </React.StrictMode>,

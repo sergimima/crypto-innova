@@ -8,7 +8,6 @@ export function Home () {
         <div className="container d-flex flex-column justify-content-between todo">
             <Header></Header>
             <div className="flex-grow-1">
-
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
